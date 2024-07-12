@@ -1,0 +1,89 @@
+학습 내용
+
+1. 최적화된 개발 구조
+	- 정형화된 구조
+	- 안정적인, 유지보수 확장이 용이한 선호하는 구조
+	- 디자인 패턴
+
+2. 디자인 패턴
+	1. MVC
+		M : Model/핵심/biz/core
+		V : View/presentation
+		C : Controller	
+	2. Builder
+	3. SingleTon
+		- 객체 수를 강제적으로 서버에 한개만 유지할 수 있게 하는 기술
+	4. DAO[다오 or 디에이오]
+		- Data Access Object
+		- db연동 전담 클래스
+		- Table명DAO.java 권장
+	5. DTO
+		- Data Transfer Object
+		- 각 tier(영역)별 주고받는 데이터 구조
+			- Customer, People ...
+		- Value Object[VO]
+		- 개발 구조
+			멤버변수/기본생성자/생성자/setXxx/getXxx/toString()
+		- 클래스명 권장 규약
+			CustomerDTO.java / CustomerVO.java / CustomerBean.java / Customer.java 
+			
+3. 학습 내용
+	- 배열
+	- 상속, 다형성
+	- Collection Framework
+		- Framework : 스펙에 맞게 개발 하는 구조들 의미
+		- library : 구조는 자유롭게 단 필요시에 함수(메소드)만 호출해서 사용
+	- 사학재단 대학 병원 전산실
+	
+4. MVC 구조 적용
+	1. MySQL에 people정보 저장
+		- crud
+			c : create, insert(sql)
+			r : read, select
+			u : update, update
+			d : delete, delete
+			
+	2. app으로 설계 
+		rdbms 연동 코드(SQL) - ~DAO
+		client 요청 받는 코드 - 화면(View), 받는 코드(controller)
+		요청받은 기능을 수행하는 코드 - 핵심 기능 Model, Biz
+			- 검색
+			- 삭제
+			- 수정
+			...
+		뷰 기능의 수행 코드 - 화면 View
+		데이터를 전송하는 코드 - DTO
+	
+	3. People table 존재한다는 가정하에 클래스
+		1. DTO - Model
+		2. DAO - Model
+		3. Controller
+		4. View
+		5. 트랜잭션, 동시성 등 다양한 데이터를 관리하는 핵심 - service(Model)
+		
+	4. 실습 구조
+		PeopleDTO.java
+		model.PeopleDAO.java - sql
+		controller.Controller.java - 브라우저으로부터 받은 요청 구분해서 핵심 로직지정 및 실행
+		view.EndView.java - 요청 결과값 출력하는 브라우저 화면이라 가정
+		view.StartView.java - main, 브라우저 첫 인트로 화면이라 가정
+	
+	5. 고객 관점에서 발생 가능한 경우의 수
+		1. 검색 하고자 하는 데이터가 없을때
+		2. 시스템 장애
+		3. 존재하는 데이터 검색, 수정, 삭제
+		4. client의 실수로 입력 자체가 무효한 데이터로 요청
+		...
+		가급적 안정적인 고려를 코드에 반영 - 예외 처리
+	6. Exception 처리 
+		- 발생 가능한 불미스러운 경미한 에러를 처리하는 메카니즘
+		- 참고
+			error : 처리 불가능한 에러
+		
+	
+		
+
+- ArraySyntax 배열
+- oop1, oop2 상속
+- ArrayListTest 
+- 
