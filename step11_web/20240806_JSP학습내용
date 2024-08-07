@@ -1,0 +1,53 @@
+JSP
+
+1. servlet으로 변환되어 실행
+	- 최초로 호출될 때 변환
+	- servlet 변환 -> 컴파일 -> 바이트코드 로딩 -> servlet 객체 생성 -> 서비스 메소드 실행
+	
+2. 기능
+	- java 데이터를 브라우저 화면에 출력을 담당하는 스펙
+	
+3. 개발 방법
+	1. html/css/javascript
+	2. jsp tage
+		- 1번과 2번은 가급적 최소화로 사용
+			- jsp 스펙 생성시부터 제시하는 표준 tag
+			- java 코드가 많이 혼용되어 사용 (현 추세에 맞지 않음)
+		- 3번, 4번 사용 권장
+			- java 코드 최소화, 즉 tag 위주로 간결하게 개발 권장
+		1. 스크립팅 tag 5가지
+		2. jsp 액션 tag
+		3. EL
+		4. JSTL
+			- 별도의 library 셋팅
+			- apache 사이트에서 제공
+			- 단, 수업시간에 버전 호환 이슈로 tomcat에서 제공하는 library 사용 예정
+			- 추후 maven으로 성정 예정
+			
+4. tag 상세 설명
+	1. 스크립팅 tag 5가지
+		- <%  %> : jsp 선언구에 사용 필수
+			<%@ page %> : page 지시자, jsp 설정 정보, import
+			<%@ taglib %> : 외부 tag library 포함할때
+		- <%-- --%> : 주석, client에게 전송되지 않는 서버단만의 주석
+		- <%  %> : 순수 자바코드 영역, service 메소드 구현부로 자동 반영
+				 : 가급적 최소로 사용
+		- <%! %> : 선언자, 멤버 변수, 메소드 구현 tag
+		- <%= %> : 브라우저에 데이터 출력 tag
+				 : EL tag로 대체 권장
+	
+	2. jsp action
+		- <jsp:...> action tag
+		- 주요 tag
+			forward 이동 tag
+			<jsp:forward page="이동 page">
+			request.getRequestDispatcher("이동 page").forward(request, response);
+				 
+	3. EL
+		- ${}
+		- jsp에 작성하는 tag는 브라우저에 출력	
+		
+	4. JSTL
+		- 반복 tag, 조건 tag 
+		- 자바코드를 최소화 할 수 있는 영특한 tag
+		- library 셋팅 필수, jsp에서 사용 선언		 
