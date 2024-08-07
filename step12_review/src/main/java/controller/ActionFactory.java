@@ -23,7 +23,7 @@ public class ActionFactory {
 		if(command.equals("list")){	  //command=list				
 			action = new AllViewBoardAction();
 		}else if(command.equals("view")){ //board?command=view&num=" + num
-			action = new ViewBoardAction();
+			action = new ViewBoardAction();//하나의 게시물 상세보기
 		}else if(command.equals("write")){  
 			action = new WriteBoardAction();
 		}else if(command.equals("updateForm")){ // updateForm

@@ -81,10 +81,29 @@
 									기능 구현시 pk에 즉 게시글 구분하는 방명록 번호가 중요
 									요청시 게시글 보기와 방명록 번호값 전송 
 									 -->
-									<a href="board?command=view&num=${e.num}"> ${e.title}</a>
+									<%-- <a href="board?command=view&num=${e.num}"> ${e.title}</a> --%>
+									
+									<%-- step02 : 비동기 적용 영역 --%>	
+									<a href="#" onclick="readOne(num=${e.num})"> ${e.title} </a>
+																	
 								</span>
 							</p>
 						</td>
+						<script>
+						//<a href="board?command=view&num=${e.num}"> ${e.title}</a>
+							function readOne(num){
+								const xhttp = new XMLHttpRequest();
+								xhttp.onreadystatechange = function() {
+									if (this.readyState == 4 && this.status == 2x`00) {
+										oneRead.innerHTML = this.responseText;
+									}
+								};		
+								xhttp.open("GET", "board?command=view&num="+num);//get 방식 데이터 전송 스펙
+								xhttp.send();
+							}
+						</script>
+						
+						
 						<td bgcolor="">
 							<p align="center">
 								<span style="font-size: 9pt;"> <a href="mailto:${e.email}">
@@ -113,5 +132,8 @@
 		<span style="font-size: 9pt;">&lt;<a href="write.html">글쓰기</a>&gt;
 		</span>
 	</div>
+	
+	<hr>
+	<div id="oneRead"></div>
 </body>
 </html>
